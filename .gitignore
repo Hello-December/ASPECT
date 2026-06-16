@@ -1,0 +1,57 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments and local config
+.env
+.env.*
+.venv/
+venv/
+env/
+ENV/
+
+# IDE/editor files
+.vscode/
+.idea/
+.trae/
+*.swp
+*.swo
+.DS_Store
+
+# Datasets, generated features, experiment outputs
+data/
+datasets/
+files/
+runs/
+wandb/
+logs/
+tmp/
+temp/
+
+# Model checkpoints and exported engines
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.engine
+*.weights
+
+# Large numeric/cache artifacts
+*.npy
+*.npz
+*.mat
+*.pkl
+*.pickle
+
+# Training/evaluation reports generated locally
+*.xlsx
+*.xls
+events.out.tfevents.*
+
+# Backup files
+*.bak
+*.backup
