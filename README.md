@@ -97,9 +97,17 @@ names:
 ```
 
 Make sure the image files, YOLO pose labels, camera intrinsics, and 3D keypoint
-definitions are consistent with the selected experiment. The inference scripts
-also require the initial 3D spacecraft keypoints used by EPnP, loaded from a
-`.mat` file in the current implementation.
+definitions are consistent with the selected experiment. The inference scripts also require the initial 3D spacecraft keypoints used by EPnP. The repository keeps the original `.mat` file unchanged at:
+
+```text
+assets/keypoints/00000.mat
+```
+
+The D4PED camera intrinsic matrix and zero distortion coefficients are provided in:
+
+```text
+configs/d4ped_camera.py
+```
 
 ## Important Configuration Notes
 

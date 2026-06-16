@@ -44,6 +44,10 @@ temp/
 *.npy
 *.npz
 *.mat
+
+# Required small metadata for reproduction
+!assets/keypoints/
+!assets/keypoints/00000.mat
 *.pkl
 *.pickle
 
