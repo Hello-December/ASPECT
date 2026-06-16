@@ -1,20 +1,7 @@
 # ASPECT
 
 ASPECT is a multi-stage monocular spacecraft pose-estimation pipeline for the
-D4PED DFH-4 spacecraft dataset. The pipeline combines YOLO26-Pose keypoint
-detection, intermediate YOLO feature extraction, a temporal Pose Transformer,
-EPnP pose recovery, and an Unscented Kalman Filter (UKF) backend for attitude
-sequence smoothing.
-
-The project is organized around the following stages:
-
-1. Train or fine-tune a YOLO26-Pose keypoint detector.
-2. Extract intermediate YOLO feature maps from image sequences.
-3. Train a Pose Transformer to refine current-frame keypoints from a temporal
-   feature window.
-4. Recover frame-wise pose with EPnP.
-5. Apply UKF smoothing under rigid-body attitude dynamics.
-6. Evaluate attitude accuracy with Euler-angle and quaternion rotation errors.
+D4PED DFH-4 spacecraft dataset.
 
 ## Repository Structure
 
