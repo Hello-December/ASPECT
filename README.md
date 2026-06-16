@@ -81,7 +81,7 @@ file path in the scripts before running them. The current local scripts contain
 absolute paths such as:
 
 ```text
-/home/chenxuyang/datasets/103_spacecraft/v2/...
+/home/<user>/datasets/103_spacecraft/v2/...
 ```
 
 Replace these paths with your own dataset location. A typical YAML file should
@@ -371,9 +371,10 @@ theta_err = 2 * arccos(|q_est^T q_gt|)
 The project also records inference latency and produces Euler-angle tracking
 plots for qualitative analysis.
 
-## Reproducibility Checklist
+## Experiment Configuration Checklist
 
-Before reporting results, record:
+When reporting or comparing results, record the following settings so that the
+same experiment can be reproduced later:
 
 - dataset version and split
 - YOLO checkpoint path
@@ -392,5 +393,4 @@ the corresponding ASPECT paper and the D4PED dataset page.
 
 ## License
 
-License information has not been specified yet. Add a `LICENSE` file before
-publishing the repository.
+This project is released under the MIT License. See `LICENSE` for details.
