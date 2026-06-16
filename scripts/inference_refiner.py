@@ -1,6 +1,9 @@
 # for VSCode only
 import sys
-sys.path.append("/home/chenxuyang/PythonProjects/ASPECT/")
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT))
 
 import os
 import time
@@ -15,6 +18,7 @@ from scipy.spatial.transform import Rotation
 from ultralytics import YOLO
 from model.refiner import PoseTransformer
 from utils.tools import find_files_by_suffix
+from configs.d4ped_camera import D4PED_CAMERA_INTRINSIC, D4PED_DIST_COEFFS
 
 class ImageQuery:
     def __init__(self, image_paths_list, pose_model, yolo_model, device="cuda:2"):
@@ -141,10 +145,10 @@ def test_pose():
     pose_model_path = "/home/chenxuyang/PythonProjects/ASPECT/files/refiner/D4PED_dynamics_refiner_v1.1_train_3_direct/best_val_dict.pt"
     # yolo_model = YOLO('/home/chenxuyang/PythonProjects/ASPECT/runs/pose/models/D4PED/yolo26s_D4PED_train_v1_finetune_0/weights/best.pt')
     # pose_model_path = r"/home/chenxuyang/PythonProjects/ASPECT/files/refiner/D4PED_speedplus_refiner_v1.1_train_1_direct/best_val_dict.pt"
-    init_3d_points_label_path = "/home/chenxuyang/PythonProjects/SpacecraftVO/render/random_light_0.0_0.7_0.0_0.1_1000_v2_2000imgs_v12/00000.mat"
-    camera_intrinsic = np.array([[10797.7175384583, 0.0, 544.276512067169], [0.0, 10808.4020025212,	384.961654616631], [0.0, 0.0, 1.0]])
-    dist_coeffs = np.array([0.0, 0.0, 0.0, 0.0, 0.0])
-    init_3d_points = scipy.io.loadmat(init_3d_points_label_path)["vertices_world_coords"]
+    init_3d_points_label_path = PROJECT_ROOT / "assets" / "keypoints" / "00000.mat"
+    camera_intrinsic = D4PED_CAMERA_INTRINSIC.copy()
+    dist_coeffs = D4PED_DIST_COEFFS.copy()
+    init_3d_points = scipy.io.loadmat(str(init_3d_points_label_path))["vertices_world_coords"]
     init_3d_points = init_3d_points.T.astype(np.float32).squeeze()[:8]  # only use first 8 points
     pose_model = PoseTransformer()
     pose_model.load_state_dict(torch.load(pose_model_path, map_location=torch.device(device)))
